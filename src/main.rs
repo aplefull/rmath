@@ -88,7 +88,30 @@ fn create_function_catalog() -> Vec<FunctionDescriptor> {
         FunctionDescriptor::new("Fibonacci(n)", wrapped_fibonacci, |_| true, (0.0, 20.0, 0.0, 30.0)),
         FunctionDescriptor::new("Prime(n)", wrapped_prime, |_| true, (0.0, 100.0, 0.0, 30.0)),
         FunctionDescriptor::new("Quotient(m, n)", wrapped_quotient, |x| x != 0.0, (-10.0, 10.0, -10.0, 10.0)),
-        
+
+        FunctionDescriptor::new("smoothstep(x)", smoothstep, |_| true, (-0.5, 1.5, -0.2, 1.2)),
+        FunctionDescriptor::new("smootherstep(x)", smootherstep, |_| true, (-0.5, 1.5, -0.2, 1.2)),
+        FunctionDescriptor::new("clamp(x)", |x| rmath::easing::clamp(x, 0.0, 1.0), |_| true, (-2.0, 2.0, -0.5, 1.5)),
+        FunctionDescriptor::new("lerp(0,1,x)", |x| lerp(0.0, 1.0, x), |_| true, (-0.5, 1.5, -0.5, 1.5)),
+
+        FunctionDescriptor::new("square_wave(x)", square_wave, |_| true, (-2.0, 2.0, -1.5, 1.5)),
+        FunctionDescriptor::new("sawtooth(x)", sawtooth, |_| true, (-2.0, 2.0, -1.5, 1.5)),
+        FunctionDescriptor::new("triangle_wave(x)", triangle_wave, |_| true, (-2.0, 2.0, -1.5, 1.5)),
+        FunctionDescriptor::new("pulse_wave(x,0.25)", |x| pulse_wave(x, 0.25), |_| true, (-2.0, 2.0, -1.5, 1.5)),
+
+        FunctionDescriptor::new("step(0,x)", |x| step(0.0, x), |_| true, (-2.0, 2.0, -0.5, 1.5)),
+        FunctionDescriptor::new("sign(x)", sign, |_| true, (-3.0, 3.0, -1.5, 1.5)),
+        FunctionDescriptor::new("fmod(x,2)", |x| fmod(x, 2.0), |_| true, (-5.0, 5.0, -2.5, 2.5)),
+
+        FunctionDescriptor::new("ease_in_quad(x)", ease_in_quad, |_| true, (-0.2, 1.2, -0.2, 1.2)),
+        FunctionDescriptor::new("ease_out_quad(x)", ease_out_quad, |_| true, (-0.2, 1.2, -0.2, 1.2)),
+        FunctionDescriptor::new("ease_in_out_quad(x)", ease_in_out_quad, |_| true, (-0.2, 1.2, -0.2, 1.2)),
+        FunctionDescriptor::new("bounce(x)", bounce, |_| true, (-1.0, 3.0, -0.5, 2.5)),
+        FunctionDescriptor::new("elastic(x)", elastic, |_| true, (-0.2, 1.2, -2.0, 2.0)),
+
+        FunctionDescriptor::new("random(x)", random, |_| true, (-10.0, 10.0, -0.1, 1.1)),
+        FunctionDescriptor::new("simple_hash(x)", |x| simple_hash(x) as f64 / (u32::MAX as f64), |_| true, (-10.0, 10.0, -0.1, 1.1)),
+
     ]
 }
 
