@@ -64,11 +64,19 @@ pub fn quotient(m: f64, n: f64) -> f64 {
     }
 
     if n == 0.0 {
-        return if m == 0.0 { f64::NAN } else { f64::INFINITY * m.signum() };
+        return if m == 0.0 {
+            f64::NAN
+        } else {
+            f64::INFINITY * m.signum()
+        };
     }
 
     if m.is_infinite() {
-        return if n.is_infinite() { f64::NAN } else { f64::INFINITY * m.signum() * n.signum() };
+        return if n.is_infinite() {
+            f64::NAN
+        } else {
+            f64::INFINITY * m.signum() * n.signum()
+        };
     }
 
     if n.is_infinite() {

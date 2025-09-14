@@ -1,4 +1,4 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::special::*;
 
 #[test]

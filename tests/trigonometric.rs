@@ -1,4 +1,4 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::trigonometric::*;
 use std::f64::consts::{PI, SQRT_2};
 
@@ -133,7 +133,7 @@ fn test_large_angle_reduction() {
     assert_relative_eq!(sin(large_angle), 0.0, epsilon = 1e-10);
     assert_relative_eq!(cos(large_angle), 1.0, epsilon = 1e-10);
     assert_relative_eq!(tan(large_angle), 0.0, epsilon = 1e-10);
-    
+
     let large_angle = 1000.0 * PI + PI / 4.0;
     assert_relative_eq!(sin(large_angle), SQRT_2 / 2.0, epsilon = 1e-10);
     assert_relative_eq!(cos(large_angle), SQRT_2 / 2.0, epsilon = 1e-10);

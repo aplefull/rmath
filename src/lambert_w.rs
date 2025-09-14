@@ -37,7 +37,7 @@ pub fn product_log(z: f64) -> f64 {
             f64::INFINITY
         } else {
             f64::NAN
-        }
+        };
     }
 
     let branch_point = -1.0 / std::f64::consts::E;
@@ -63,7 +63,7 @@ pub fn product_log(z: f64) -> f64 {
         let z3 = z2 * z;
         let z4 = z3 * z;
         let z5 = z4 * z;
-        w = z - z2 + 1.5 * z3 - 8.0/3.0 * z4 + 125.0/24.0 * z5;
+        w = z - z2 + 1.5 * z3 - 8.0 / 3.0 * z4 + 125.0 / 24.0 * z5;
     } else if z < 3.0 {
         w = z / (1.0 + z);
 

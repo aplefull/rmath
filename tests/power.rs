@@ -1,4 +1,4 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::power::*;
 use std::f64::consts::E;
 
@@ -38,7 +38,7 @@ fn test_power_special_cases() {
     assert_relative_eq!(power(0.0, 2.0), 0.0, epsilon = 1e-10);
     assert!(power(0.0, -1.0).is_infinite());
 
-    assert_relative_eq!(power(8.0, 1.0/3.0), 2.0, epsilon = 1e-10);
+    assert_relative_eq!(power(8.0, 1.0 / 3.0), 2.0, epsilon = 1e-10);
     assert_relative_eq!(power(16.0, 0.25), 2.0, epsilon = 1e-10);
 }
 
@@ -137,9 +137,9 @@ fn test_root_power_consistency() {
     for val in values.iter() {
         assert_relative_eq!(sqrt(*val), power(*val, 0.5), epsilon = 1e-10);
 
-        assert_relative_eq!(cbrt(*val), power(*val, 1.0/3.0), epsilon = 1e-10);
+        assert_relative_eq!(cbrt(*val), power(*val, 1.0 / 3.0), epsilon = 1e-10);
 
         assert_relative_eq!(nth_root(*val, 2), power(*val, 0.5), epsilon = 1e-10);
-        assert_relative_eq!(nth_root(*val, 3), power(*val, 1.0/3.0), epsilon = 1e-10);
+        assert_relative_eq!(nth_root(*val, 3), power(*val, 1.0 / 3.0), epsilon = 1e-10);
     }
 }

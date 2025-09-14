@@ -1,6 +1,6 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::logarithmic::*;
-use std::f64::consts::{E, LN_2, LN_10};
+use std::f64::consts::{E, LN_10, LN_2};
 
 #[test]
 fn test_log_basic_values() {
@@ -66,8 +66,14 @@ fn test_log_base_special_cases() {
     assert!(log_base(2.0, 0.0).is_infinite() && log_base(2.0, 0.0).is_sign_negative());
     assert!(log_base(2.0, -1.0).is_nan());
 
-    assert!(log_base(2.0, f64::INFINITY).is_infinite() && log_base(2.0, f64::INFINITY).is_sign_positive());
-    assert!(log_base(0.5, f64::INFINITY).is_infinite() && log_base(0.5, f64::INFINITY).is_sign_negative());
+    assert!(
+        log_base(2.0, f64::INFINITY).is_infinite()
+            && log_base(2.0, f64::INFINITY).is_sign_positive()
+    );
+    assert!(
+        log_base(0.5, f64::INFINITY).is_infinite()
+            && log_base(0.5, f64::INFINITY).is_sign_negative()
+    );
 }
 
 #[test]
@@ -100,7 +106,11 @@ fn test_change_of_base_formula() {
     for base in bases.iter() {
         for val in values.iter() {
             // log_a(x) = ln(x) / ln(a)
-            assert_relative_eq!(log_base(*base, *val), log(*val) / log(*base), epsilon = 1e-10);
+            assert_relative_eq!(
+                log_base(*base, *val),
+                log(*val) / log(*base),
+                epsilon = 1e-10
+            );
 
             if (*base - 10.0).abs() < 1e-10 {
                 assert_relative_eq!(log_base(*base, *val), log10(*val), epsilon = 1e-10);
@@ -133,7 +143,7 @@ fn test_logarithm_consistency() {
 
 #[test]
 fn test_exp_log_inverse() {
-    use rmath::power::{exp, exp2, exp10};
+    use rmath::power::{exp, exp10, exp2};
 
     let values: [f64; 6] = [-2.0, -1.0, 0.0, 1.0, 2.0, 3.0];
 

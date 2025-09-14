@@ -36,8 +36,16 @@ fn test_ease_in_out_quad_basic() {
 
 #[test]
 fn test_ease_in_out_quad_symmetry() {
-    assert_relative_eq!(ease_in_out_quad(0.25), 1.0 - ease_in_out_quad(0.75), epsilon = 1e-10);
-    assert_relative_eq!(ease_in_out_quad(0.1), 1.0 - ease_in_out_quad(0.9), epsilon = 1e-10);
+    assert_relative_eq!(
+        ease_in_out_quad(0.25),
+        1.0 - ease_in_out_quad(0.75),
+        epsilon = 1e-10
+    );
+    assert_relative_eq!(
+        ease_in_out_quad(0.1),
+        1.0 - ease_in_out_quad(0.9),
+        epsilon = 1e-10
+    );
 }
 
 #[test]

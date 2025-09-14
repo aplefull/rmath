@@ -45,9 +45,15 @@ pub fn lcm_multiple(numbers: &[i64]) -> i64 {
 }
 
 fn is_prime_small(n: u64) -> bool {
-    if n < 2 { return false; }
-    if n == 2 { return true; }
-    if n % 2 == 0 { return false; }
+    if n < 2 {
+        return false;
+    }
+    if n == 2 {
+        return true;
+    }
+    if n % 2 == 0 {
+        return false;
+    }
 
     let limit = (n as f64).sqrt() as u64;
     for i in (3..=limit).step_by(2) {
@@ -59,7 +65,9 @@ fn is_prime_small(n: u64) -> bool {
 }
 
 pub fn is_prime(n: i64) -> bool {
-    if n <= 1 { return false; }
+    if n <= 1 {
+        return false;
+    }
     is_prime_small(n as u64)
 }
 
@@ -137,8 +145,12 @@ pub fn divisors(n: i64) -> Vec<i64> {
 
 fn sieve_of_eratosthenes(limit: usize) -> Vec<bool> {
     let mut is_prime = vec![true; limit + 1];
-    if limit == 0 { is_prime[0] = false; }
-    if limit >= 1 { is_prime[1] = false; }
+    if limit == 0 {
+        is_prime[0] = false;
+    }
+    if limit >= 1 {
+        is_prime[1] = false;
+    }
 
     for i in 2..=((limit as f64).sqrt() as usize) {
         if is_prime[i] {
@@ -162,7 +174,7 @@ fn ensure_primes_computed(up_to: usize) {
                 (2..=up_to)
                     .filter(|&i| is_prime[i])
                     .map(|i| i as i64)
-                    .collect()
+                    .collect(),
             );
             PRIMES_COMPUTED_UP_TO = up_to;
         }
@@ -191,7 +203,7 @@ pub fn prime(n: i32) -> i64 {
             }
         }
     }
-    
+
     panic!("Cannot compute prime({}) - need larger sieve", n);
 }
 

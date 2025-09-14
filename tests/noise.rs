@@ -13,7 +13,12 @@ fn test_random_range() {
     for i in 0..100 {
         let x = i as f64 * 0.1;
         let r = random(x);
-        assert!(r >= 0.0 && r <= 1.0, "random({}) = {} is out of range [0,1]", x, r);
+        assert!(
+            r >= 0.0 && r <= 1.0,
+            "random({}) = {} is out of range [0,1]",
+            x,
+            r
+        );
     }
 }
 
@@ -25,13 +30,23 @@ fn test_random_distribution() {
     }
 
     let mean = values.iter().sum::<f64>() / values.len() as f64;
-    assert!((mean - 0.5).abs() < 0.1, "Mean {} should be close to 0.5", mean);
+    assert!(
+        (mean - 0.5).abs() < 0.1,
+        "Mean {} should be close to 0.5",
+        mean
+    );
 
     let low_count = values.iter().filter(|&&x| x < 0.25).count();
     let high_count = values.iter().filter(|&&x| x > 0.75).count();
 
-    assert!(low_count > 200, "Should have a reasonable number of low values");
-    assert!(high_count > 200, "Should have a reasonable number of high values");
+    assert!(
+        low_count > 200,
+        "Should have a reasonable number of low values"
+    );
+    assert!(
+        high_count > 200,
+        "Should have a reasonable number of high values"
+    );
 }
 
 #[test]
@@ -70,7 +85,11 @@ fn test_simple_hash_avalanche() {
     assert_ne!(h1, h2);
 
     let diff_bits = (h1 ^ h2).count_ones();
-    assert!(diff_bits > 10, "Should have good avalanche effect, got {} differing bits", diff_bits);
+    assert!(
+        diff_bits > 10,
+        "Should have good avalanche effect, got {} differing bits",
+        diff_bits
+    );
 }
 
 #[test]
@@ -86,7 +105,11 @@ fn test_simple_hash_distribution() {
     }
 
     assert!(collisions < 50, "Too many hash collisions: {}", collisions);
-    assert!(hashes.len() > 950, "Should have mostly unique hashes, got {}", hashes.len());
+    assert!(
+        hashes.len() > 950,
+        "Should have mostly unique hashes, got {}",
+        hashes.len()
+    );
 }
 
 #[test]
@@ -107,5 +130,8 @@ fn test_simple_hash_special_values() {
     let _h_neg_inf = simple_hash(f64::NEG_INFINITY);
 
     assert_eq!(simple_hash(f64::INFINITY), simple_hash(f64::INFINITY));
-    assert_eq!(simple_hash(f64::NEG_INFINITY), simple_hash(f64::NEG_INFINITY));
+    assert_eq!(
+        simple_hash(f64::NEG_INFINITY),
+        simple_hash(f64::NEG_INFINITY)
+    );
 }

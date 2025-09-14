@@ -1,26 +1,26 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::hyperbolic::*;
 use std::f64::consts::E;
 
 #[test]
 fn test_sinh_basic_values() {
     assert_relative_eq!(sinh(0.0), 0.0, epsilon = 1e-10);
-    assert_relative_eq!(sinh(1.0), (E - 1.0/E) / 2.0, epsilon = 1e-10);
-    assert_relative_eq!(sinh(-1.0), -(E - 1.0/E) / 2.0, epsilon = 1e-10);
+    assert_relative_eq!(sinh(1.0), (E - 1.0 / E) / 2.0, epsilon = 1e-10);
+    assert_relative_eq!(sinh(-1.0), -(E - 1.0 / E) / 2.0, epsilon = 1e-10);
 }
 
 #[test]
 fn test_cosh_basic_values() {
     assert_relative_eq!(cosh(0.0), 1.0, epsilon = 1e-10);
-    assert_relative_eq!(cosh(1.0), (E + 1.0/E) / 2.0, epsilon = 1e-10);
-    assert_relative_eq!(cosh(-1.0), (E + 1.0/E) / 2.0, epsilon = 1e-10);
+    assert_relative_eq!(cosh(1.0), (E + 1.0 / E) / 2.0, epsilon = 1e-10);
+    assert_relative_eq!(cosh(-1.0), (E + 1.0 / E) / 2.0, epsilon = 1e-10);
 }
 
 #[test]
 fn test_tanh_basic_values() {
     assert_relative_eq!(tanh(0.0), 0.0, epsilon = 1e-10);
-    assert_relative_eq!(tanh(1.0), (E*E - 1.0) / (E*E + 1.0), epsilon = 1e-10);
-    assert_relative_eq!(tanh(-1.0), -(E*E - 1.0) / (E*E + 1.0), epsilon = 1e-10);
+    assert_relative_eq!(tanh(1.0), (E * E - 1.0) / (E * E + 1.0), epsilon = 1e-10);
+    assert_relative_eq!(tanh(-1.0), -(E * E - 1.0) / (E * E + 1.0), epsilon = 1e-10);
 }
 
 #[test]

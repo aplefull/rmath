@@ -1,4 +1,4 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::aggregate::*;
 
 #[test]
@@ -22,7 +22,11 @@ fn test_mean() {
 
 #[test]
 fn test_geometric_mean() {
-    assert_relative_eq!(geometric_mean(&[1.0, 4.0, 9.0]), (1.0 * 4.0 * 9.0_f64).powf(1.0/3.0), epsilon = 1e-10);
+    assert_relative_eq!(
+        geometric_mean(&[1.0, 4.0, 9.0]),
+        (1.0 * 4.0 * 9.0_f64).powf(1.0 / 3.0),
+        epsilon = 1e-10
+    );
     assert_relative_eq!(geometric_mean(&[2.0, 8.0]), 4.0, epsilon = 1e-10);
     assert!(geometric_mean(&[]).is_nan());
     assert!(geometric_mean(&[-1.0, 2.0]).is_nan());
@@ -31,7 +35,11 @@ fn test_geometric_mean() {
 
 #[test]
 fn test_harmonic_mean() {
-    assert_relative_eq!(harmonic_mean(&[1.0, 2.0, 4.0]), 3.0 / (1.0 + 0.5 + 0.25), epsilon = 1e-10);
+    assert_relative_eq!(
+        harmonic_mean(&[1.0, 2.0, 4.0]),
+        3.0 / (1.0 + 0.5 + 0.25),
+        epsilon = 1e-10
+    );
     assert_relative_eq!(harmonic_mean(&[2.0, 2.0]), 2.0, epsilon = 1e-10);
     assert!(harmonic_mean(&[]).is_nan());
     assert!(harmonic_mean(&[0.0, 1.0]).is_nan());
@@ -94,14 +102,20 @@ fn test_integer_functions() {
 
 #[test]
 fn test_cumulative_functions() {
-    assert_eq!(cumulative_sum(&[1.0, 2.0, 3.0, 4.0]), vec![1.0, 3.0, 6.0, 10.0]);
+    assert_eq!(
+        cumulative_sum(&[1.0, 2.0, 3.0, 4.0]),
+        vec![1.0, 3.0, 6.0, 10.0]
+    );
     assert_eq!(cumulative_product(&[2.0, 3.0, 4.0]), vec![2.0, 6.0, 24.0]);
     assert_eq!(cumulative_sum(&[]), Vec::<f64>::new());
 }
 
 #[test]
 fn test_pairwise_differences() {
-    assert_eq!(pairwise_differences(&[1.0, 3.0, 6.0, 10.0]), vec![2.0, 3.0, 4.0]);
+    assert_eq!(
+        pairwise_differences(&[1.0, 3.0, 6.0, 10.0]),
+        vec![2.0, 3.0, 4.0]
+    );
     assert_eq!(pairwise_differences(&[5.0]), Vec::<f64>::new());
     assert_eq!(pairwise_differences(&[]), Vec::<f64>::new());
 }

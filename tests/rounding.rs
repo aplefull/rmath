@@ -1,4 +1,4 @@
-use approx::{assert_relative_eq};
+use approx::assert_relative_eq;
 use rmath::rounding::*;
 
 #[test]
@@ -82,7 +82,13 @@ fn test_special_cases() {
 
 #[test]
 fn test_modulo_quotient_relationship() {
-    let test_cases = [(7.0, 3.0), (-7.0, 3.0), (7.0, -3.0), (-7.0, -3.0), (5.5, 2.0)];
+    let test_cases = [
+        (7.0, 3.0),
+        (-7.0, 3.0),
+        (7.0, -3.0),
+        (-7.0, -3.0),
+        (5.5, 2.0),
+    ];
 
     for (m, n) in test_cases.iter() {
         let q = quotient(*m, *n);

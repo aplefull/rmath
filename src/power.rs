@@ -108,7 +108,7 @@ pub fn nth_root(z: f64, n: i32) -> f64 {
             f64::NAN
         } else {
             -(-z).powf(1.0 / n as f64)
-        }
+        };
     }
 
     if n == 2 {
@@ -148,7 +148,7 @@ pub fn exp(z: f64) -> f64 {
             f64::INFINITY
         } else {
             0.0
-        }
+        };
     }
 
     z.exp()
@@ -168,7 +168,7 @@ pub fn exp2(z: f64) -> f64 {
             f64::INFINITY
         } else {
             0.0
-        }
+        };
     }
 
     z.exp2()
@@ -188,7 +188,7 @@ pub fn exp10(z: f64) -> f64 {
             f64::INFINITY
         } else {
             0.0
-        }
+        };
     }
 
     const LN_10: f64 = std::f64::consts::LN_10;
