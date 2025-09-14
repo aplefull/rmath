@@ -57,3 +57,19 @@ pub fn arcsec(x: f64) -> f64 {
     }
     (1.0 / x).acos()
 }
+
+pub fn sinc(x: f64) -> f64 {
+    if x.is_nan() {
+        return f64::NAN;
+    }
+
+    if x == 0.0 {
+        return 1.0;
+    }
+
+    if x.is_infinite() {
+        return 0.0;
+    }
+
+    x.sin() / x
+}

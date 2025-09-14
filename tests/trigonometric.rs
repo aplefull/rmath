@@ -76,6 +76,14 @@ fn test_arctan() {
 }
 
 #[test]
+fn test_sinc() {
+    assert_relative_eq!(sinc(0.0), 1.0, epsilon = 1e-10);
+    assert_relative_eq!(sinc(PI / 6.0), sin(PI / 6.0) / (PI / 6.0), epsilon = 1e-10);
+    assert_relative_eq!(sinc(PI / 4.0), sin(PI / 4.0) / (PI / 4.0), epsilon = 1e-10);
+    assert_relative_eq!(sinc(PI / 3.0), sin(PI / 3.0) / (PI / 3.0), epsilon = 1e-10);
+}
+
+#[test]
 fn test_inverse_reciprocal_functions() {
     assert_relative_eq!(arcsec(1.0), 0.0, epsilon = 1e-10);
     assert_relative_eq!(arcsec(2.0), PI / 3.0, epsilon = 1e-10);

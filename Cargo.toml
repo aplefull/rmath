@@ -18,7 +18,9 @@ name = "rmath"
 path = "src/lib.rs"
 
 [dependencies]
-macroquad = "0.4"
+macroquad = "0.3"
+egui = "0.21"
+egui-macroquad = "0.14"
 
 [dev-dependencies]
 approx = "0.5"
